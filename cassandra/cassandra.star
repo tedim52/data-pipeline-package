@@ -40,15 +40,18 @@ def run(plan):
     keyspace_setup_result = plan.exec(
         service_name="cassandra",
         recipe=ExecRecipe(command=["cqlsh", "-f", "/opt/scripts/keyspace.cql"]),
+        acceptable_codes=[0, 2], # 2 indicates tables are already created so don't err
     )
+
     # TODO: verify success
     plan.print(keyspace_setup_result)
     schema_setup_result = plan.exec(
         service_name="cassandra",
         recipe=ExecRecipe(command=["cqlsh", "-f", "/opt/scripts/schema.cql"]),
+        acceptable_codes=[0, 2],
     )
     # TODO: verify success
     plan.print(schema_setup_result)
 
     # TODO: return information useful downstream
-    return cassandra
+    return struct(uri="cassandra:9092", weather_table="weatherreport", twitter_table="twitterdata", keyspace_name="kafkapipeline") 
