@@ -1,7 +1,7 @@
 cassandra = import_module("./cassandra/cassandra.star")
 kafka = import_module("./kafka/kafka.star")
 producers = import_module("./producers/producers.star")
-data_viz = import_module("./data-viz/jupyter-notebook.star"
+data_viz = import_module("./data-viz/jupyter-notebook.star")
 
 def run(plan, args):
     # start cassandra database
