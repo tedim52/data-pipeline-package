@@ -54,4 +54,5 @@ def run(plan):
     plan.print(schema_setup_result)
 
     # TODO: return information useful downstream
-    return struct(uri="cassandra:9092", weather_table="weatherreport", twitter_table="twitterdata", keyspace_name="kafkapipeline") 
+    uri="{0}:{1}".format(cassandra.ip_address, 9092)
+    return struct(uri=uri, weather_table="weatherreport", twitter_table="twitterdata", keyspace_name="kafkapipeline") 
