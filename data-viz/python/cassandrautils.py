@@ -111,15 +111,23 @@ def getDF(source_table):
     if isinstance(CASSANDRA_HOST, list):
         cluster = Cluster(CASSANDRA_HOST)
     else:
+        print(CASSANDRA_HOST)
         cluster = Cluster([CASSANDRA_HOST])
 
     if source_table not in (WEATHER_TABLE, TWITTER_TABLE):
         return None
 
+    print("attempting to connect to cassandra...")
+    print("please connect")
+    print(CASSANDRA_HOST)
     session = cluster.connect(CASSANDRA_KEYSPACE)
+    print("connected to cassandra")
+
     session.row_factory = dict_factory
     cqlquery = "SELECT * FROM " + source_table + ";"
+    print("attempting to query cassandra")
     rows = session.execute(cqlquery)
+    print("executed casandra query")
     return pd.DataFrame(rows)
 
 

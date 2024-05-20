@@ -48,7 +48,7 @@ def run(plan):
                 )
             },
             env_vars={
-                "ZK_HOSTS": "zookeeper:2181",
+                "ZK_HOSTS": zookeeper_uri,
                 "APPLICATION_SECRET": "random-secret",
                 "KAFKA_MANAGER_AUTH_ENABLED": "true",
                 "KAFKA_MANAGER_USERNAME": "admin",

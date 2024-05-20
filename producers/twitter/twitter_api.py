@@ -74,7 +74,10 @@ class stream_listener(tweepy.StreamingClient):
             'location': TWEET_LOCATION
         }
         print(twitter_df)
+        self.producer.send(TOPIC_NAME, value=twitter_df)
+        self.producer.flush()
         # print('Errors: ' + errors)
+        return True
 
     def on_request_error(self, status_code):
         twitter_df = {
@@ -83,11 +86,13 @@ class stream_listener(tweepy.StreamingClient):
             'location': TWEET_LOCATION
         }
         print(twitter_df)
+        self.producer.send(TOPIC_NAME, value=twitter_df)
+        self.producer.flush()
         # if status_code == 420:
-        #     # returning False in on_error disconnects the stream
+
         #     return False
         # print('Streaming Error: ' + str(status_code))
-
+        return True
 
 
 

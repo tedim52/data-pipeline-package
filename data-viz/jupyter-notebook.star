@@ -6,7 +6,7 @@ def run(plan, cassandra_info):
         config=ServiceConfig(
             image=ImageBuildSpec(
                 image_name="dataviz:latest",
-                build_context_dir=".",
+                build_context_dir="./",
             ),
             ports = {
                 "notebook": PortSpec(
@@ -16,7 +16,8 @@ def run(plan, cassandra_info):
                 )
             },
             env_vars={
-                "CASSANDRA_HOST": cassandra_info.uri,
+                # "CASSANDRA_HOST": cassandra_info.uri,
+                "CASSANDRA_HOST": "cassandradb",
                 "CASSANDRA_KEYSPACE": cassandra_info.keyspace_name,
                 "WEATHER_TABLE": cassandra_info.weather_table,
                 "TWITTER_TABLE": cassandra_info.twitter_table,

@@ -4,8 +4,8 @@ def run(plan, kafka_broker_uri):
         name="twitter-producer",
         config=ServiceConfig(
             image=ImageBuildSpec(
-                build_context_dir="./twitter",
-                image_name="twitter-producer:3.9.0",
+                build_context_dir="./twitter/",
+                image_name="twitter-producer:latestagain",
             ),
             env_vars={
                 "KAFKA_BROKER_URL": kafka_broker_uri,
@@ -18,8 +18,8 @@ def run(plan, kafka_broker_uri):
         name="weather-producer",
         config=ServiceConfig(
             image=ImageBuildSpec(
-                build_context_dir="./weather",
-                image_name="weather-producer",
+                build_context_dir="./weather/",
+                image_name="weather-producer:latestagain",
             ),
             env_vars={
                 "KAFKA_BROKER_URL": kafka_broker_uri,
