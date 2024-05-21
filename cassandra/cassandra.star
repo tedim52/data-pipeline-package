@@ -41,6 +41,7 @@ def run(plan):
         service_name="cassandra",
         recipe=ExecRecipe(command=["cqlsh", "-f", "/opt/scripts/keyspace.cql"]),
         acceptable_codes=[0, 2], # 2 indicates tables are already created so don't err
+        description="Configure Cassandra Keyspace"
     )
 
     # TODO: verify success
@@ -49,6 +50,7 @@ def run(plan):
         service_name="cassandra",
         recipe=ExecRecipe(command=["cqlsh", "-f", "/opt/scripts/schema.cql"]),
         acceptable_codes=[0, 2],
+        description="Configure Cassandra Schema",
     )
     # TODO: verify success
     plan.print(schema_setup_result)

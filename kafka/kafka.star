@@ -70,6 +70,7 @@ def run(plan):
             src="datastax-connector/kafka-connect-cassandra.jar",
             name="kafka-connect-cassandra-artifact",
         )],
+        description="Configure kafka-cassandra connector"
     )
     plan.print(result)
 
