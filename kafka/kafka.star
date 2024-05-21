@@ -86,7 +86,7 @@ def run(plan):
                 ),
             },
             files={
-                "/datastax-connector/kafka-connect-cassandra.jar": "kafka-connect-cassandra-artifact",
+                "/datastax-connector/kafka-connect-cassandra.jar": result.file_artifacts[0],
             },
             env_vars={
                 "CONNECT_PLUGIN_PATH": "/usr/share/java,/datastax-connector/kafka-connect-cassandra.jar",
